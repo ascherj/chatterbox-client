@@ -8,7 +8,6 @@ var Parse = {
 
   readAll: function(successCB, errorCB = null) {
     $.ajax({
-      async: false, // added by Jake
       url: Parse.server,
       type: 'GET',
       data: { order: '-createdAt' },
