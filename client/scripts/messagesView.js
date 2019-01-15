@@ -3,11 +3,12 @@ var MessagesView = {
   $chats: $('#chats'),
 
   initialize: function() {
-
+    MessagesView.render();
   },
 
   render: function() {
-
+    var messages = Messages.get();
+    messages.forEach((message) => MessagesView.renderMessage(message));
   },
 
   renderMessage: function(message) {
