@@ -10,6 +10,10 @@ var FormView = {
     // Stop the browser from submitting the form
     event.preventDefault();
 
+    var $message = $('#message');
+    console.log($message.val());
+    Parse.create($message);
+
     console.log('click!');
   },
 
