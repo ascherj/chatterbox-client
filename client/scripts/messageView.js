@@ -8,6 +8,9 @@ var MessageView = {
         <div>
           <%= text %>
         </div>
+        <div class="timestamp">
+          <%= createdAt %>
+        </div>
       </div>
     `)
 };
