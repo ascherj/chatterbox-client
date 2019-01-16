@@ -1,13 +1,13 @@
 var Rooms = {
 
-  _data: [],
+  _storage: [],
 
   selected: 'lobby',
 
 
   add: function(room, callback = () => {}) {
-    if (!Rooms._data.includes(room)) {
-      Rooms._data.push(room);
+    if (!Rooms._storage.includes(room)) {
+      Rooms._storage.push(room);
     }
     Rooms.selected = room;
     callback();
@@ -17,7 +17,7 @@ var Rooms = {
     _.chain(messages)
       .pluck('roomname')
       .uniq()
-      .each(room => Rooms._data.push(room));
+      .each(room => Rooms._storage.push(room));
 
     callback();
   },

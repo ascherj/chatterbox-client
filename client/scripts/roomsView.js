@@ -10,7 +10,7 @@ var RoomsView = {
 
   render: function() {
     RoomsView.$select.html('');
-    Rooms._data.forEach(room => RoomsView.renderRoom(room));
+    Rooms._storage.forEach(room => RoomsView.renderRoom(room));
     RoomsView.$select.val(Rooms.selected);
   },
 
