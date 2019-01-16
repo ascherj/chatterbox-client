@@ -13,7 +13,7 @@ var FormView = {
     var message = {
       username: App.username,
       text: FormView.$form.find('#message').val(),
-      roomname: Rooms.current || 'lobby'
+      roomname: Rooms.selected || 'lobby'
     };
 
 
@@ -22,7 +22,7 @@ var FormView = {
       Messages.add(message, MessagesView.render);
     });
 
-    console.log('click!');
+    FormView.$form.find('#message').val('');
   },
 
   setStatus: function(active) {
