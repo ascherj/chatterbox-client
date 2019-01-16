@@ -3,6 +3,7 @@ var Parse = {
   server: `http://parse.${window.CAMPUS}.hackreactor.com/chatterbox/classes/messages`,
 
   create: function(message, successCB, errorCB = null) {
+
     $.ajax({
       url: Parse.server,
       type: 'POST',
@@ -17,7 +18,6 @@ var Parse = {
 
   readAll: function(successCB, errorCB = null) {
     $.ajax({
-      async: false,
       url: Parse.server,
       type: 'GET',
       data: { order: '-createdAt' },

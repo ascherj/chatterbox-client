@@ -2,29 +2,30 @@ var Messages = {
 
   _storage: [],
 
-  receive: (data) => {
-    Messages._storage = Messages.filter(data);
-  },
-
   get: () => {
     return Messages._storage;
   },
 
-  filter: (data) => {
-    let regex = /<script[\s\S]*?>[\s\S]*?<\/script>/gi;
+  add: function(message) {
+    Messages._storage.push(Messages._filter(message));
+  },
 
-    // obtain messages from users
-    let userMessages = data.results.filter((message) => message.hasOwnProperty('username'));
-
-    // escape any text with <script> tags
-    let filteredUserMessages = userMessages.map((message) => {
-      if (regex.test(message.text)) {
-        message.text = '';
-      }
-      return message;
+  update: function(messages, callback = ()=>{} ) {
+    messages.forEach((message) => {
+      Messages._storage.push(Messages._filter(message));
     });
 
-    return filteredUserMessages;
+    callback();
+  },
+
+  _filter: function(message) {
+    let regex = /<script[\s\S]*?>[\s\S]*?<\/script>/gi;
+
+    message.username = (regex.test(message.username)) ? '' : message.username;
+    message.text = (regex.test(message.text)) ? '' : message.text;
+    message.roomname = (regex.test(message.roomname)) ? '' : message.roomname;
+
+    return message;
   }
 
 };
