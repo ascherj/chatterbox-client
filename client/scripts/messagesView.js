@@ -3,7 +3,10 @@ var MessagesView = {
   $chats: $('#chats'),
 
   initialize: function() {
-
+    MessagesView.$chats.on('click', (event) => {
+      var user = $(event.target).text();
+      Friends.add(user);
+    });
   },
 
   render: function() {
