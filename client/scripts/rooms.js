@@ -6,7 +6,9 @@ var Rooms = {
 
 
   add: function(room, callback = () => {}) {
-    Rooms._data.push(room);
+    if (!Rooms._data.includes(room)) {
+      Rooms._data.push(room);
+    }
     Rooms.selected = room;
     callback();
   },
