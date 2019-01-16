@@ -6,8 +6,9 @@ var Messages = {
     return Messages._storage;
   },
 
-  add: function(message) {
+  add: function(message, callback) {
     Messages._storage.push(Messages._filter(message));
+    callback();
   },
 
   update: function(messages, callback = ()=>{} ) {
